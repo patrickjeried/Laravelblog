@@ -2,18 +2,19 @@
 <html lang="{{ app()->getLocale() }}">
 <head>
 
-    
+    @include ('layouts.head')
 
-    <link rel="stylesheet" type="text/css" href="{{url('assets/css/bootstrap.min.css')}}"/>
+
+    <!-- <link rel="stylesheet" type="text/css" href="{{url('assets/css/bootstrap.min.css')}}"/>
     <script src="{{url('assets/js/components/bootstrap.js')}}"></script>
 
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 
     <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- <meta name="csrf-token" content="{{ csrf_token() }}"> -->
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
@@ -26,6 +27,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
 </head>
 <body>
     <div id="app">
@@ -41,8 +43,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li><a class="nav-link" href="{{ url('/home') }}">Home</a></li>
-                        <li><a class="nav-link" href="{{ url('/post') }}">Add Post</a></li>
+                            <li><a class="nav-link" href="{{ url('/home') }}">Home</a></li>
+                        @if(Auth::id() == 1)
+                             <li><a class="nav-link" href="{{ url('/post') }}">Add Post</a></li>
+                        @endif
+                       
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -59,14 +64,17 @@
                                 </a>
 
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    @if(Auth::id() ==1)
                                     <li><a class="dropdown-item" href="{{ url('/profile') }}">{{ __('Profile') }}</a></li>
                                     <li><a class="dropdown-item" href="{{ url('/category') }}">{{ __('Category') }}</a></li>
-                                
+                                    @endif
+                                    <li>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
+                                    </li>
                                 </ul>
                                 
                                     
@@ -86,5 +94,6 @@
             @yield('content')
         </main>
     </div>
+@include ('layouts.body')
 </body>
 </html>
