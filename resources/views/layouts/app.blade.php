@@ -19,22 +19,24 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
 
     <!-- Fonts -->
-    <link rel="dns-prefetch" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+    <!-- <link rel="dns-prefetch" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css"> -->
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <!-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
     
 </head>
 <body>
+
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                    BLOG
+                    <!-- <img src="pat.jpg" style="height: 200px; margin-bottom: 20px; margin-left: 5px;"> -->
+                    
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -43,9 +45,10 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                            <li><a class="nav-link" href="{{ url('/home') }}">Home</a></li>
+                            <li><p style="margin-top: 21px; margin-right: 20px; font-family: 'Monoton', cursive; font-size: 26px; color: #E6780B; text-decoration-style: none;">Juantech</p></li>
+                            <li><a class="nav-link" href="{{ url('/home') }}" style="margin-top: 25px;">Home</a></li>
                         @if(Auth::id() == 1)
-                             <li><a class="nav-link" href="{{ url('/post') }}">Add Post</a></li>
+                             <li><a class="nav-link" href="{{ url('/post') }}" style="margin-top: 25px;"">Add Post</a></li>
                         @endif
                        
                     </ul>
@@ -65,14 +68,14 @@
 
                                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     @if(Auth::id() ==1)
-                                    <li><a class="dropdown-item" href="{{ url('/profile') }}">{{ __('Profile') }}</a></li>
-                                    <li><a class="dropdown-item" href="{{ url('/category') }}">{{ __('Category') }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ url('/profile') }}" ><i class="fas fa-user"></i>    {{ __('Profile') }}</a></li>
+                                    <li><a class="dropdown-item" href="{{ url('/category') }}"><i class="fas fa-list-alt"></i>   {{ __('Category') }}</a></li>
                                     @endif
                                     <li>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                                     document.getElementById('logout-form').submit();"><i class="fas fa-sign-out-alt"></i>
+                                            {{ __('Logout') }}
                                     </a>
                                     </li>
                                 </ul>

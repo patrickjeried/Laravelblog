@@ -1,5 +1,6 @@
 @extends('layouts.app')
 
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -7,7 +8,7 @@
         @if(session('response'))
             <div class="alert alert-success">{{session('response')}}</div>
         @endif
-            <div class="card">
+            <div class="card text-center">
                 <div class="card-header">Post View</div>
 
                 <div class="card-body">
@@ -33,24 +34,24 @@
                             <p>{{ $post->post_body }}</p>
 
                             <ul class="nav nav-pills">
-                                <li role="presentation">
+                                <li role="presentation" style="margin:10px;">
                                     <a href="{{ url("/like/{$post->id}") }}">
-                                        <span class="glyphicon glyphicon-thumbs-up"> Like({{$likeCtr}})</span>
+                                        <span class="glyphicon glyphicon-thumbs-up"><i class="far fa-thumbs-up"></i>   Like ({{$likeCtr}})    </span>
                                     </a>
                                 </li>
-                                <li role="presentation">
+                                <li role="presentation" style="margin:10px;">
                                     <a href="{{ url("/dislike/{$post->id}") }}">
-                                        <span class="glyphicon glyphicon-thumbs-down"> Dislike({{$dislikeCtr}})</span>
+                                        <span class="glyphicon glyphicon-thumbs-down"><i class="far fa-thumbs-down"></i>    Dislike ({{$dislikeCtr}})    </span>
                                     </a>
                                 </li>
-                                <li role="presentation">
+                                <li role="presentation" style="margin:10px;">
                                     <a href="{{ url("/comment/{$post->id}") }}">
-                                        <span class="glyphicon glyphicon-comment"> COMMENT</span>
+                                        <i class="fas fa-comments">  Comments</i>
                                     </a>
                                 </li>
                             </ul>
 
-                            <cite style="float:left;">Posted on: {{date('M j, Y H:i', strtotime($post->updated_at))}}</cite>
+                            <cite style="float:left; margin-bottom: 10px;">Posted on: {{date('M j, Y H:i', strtotime($post->updated_at))}}</cite>
 
                             
                             
@@ -74,6 +75,7 @@
                         @foreach($comments->all() as $comment)
                             <p>{{ $comment->comment }}</p>
                             <p>Posted by: {{ $comment->name }}</p>
+
                             <hr/>
 
                     @endforeach

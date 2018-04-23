@@ -1,10 +1,10 @@
 @extends('layouts.app')
-<style type="text/css">
+<!-- <style type="text/css">
     .avatar{
         border-radius: 100%;
         max-width: 100px;
     }
-</style>
+</style> -->
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -20,15 +20,15 @@
         @endif
             <div class="card">
                 <div class="card-header">
-                    <div class="col-md-4">Dashboard</div>
+                    <div class="col-md-4"></div>
                     <div class="col-md-8">
                         <form method="POST" action='{{ url("/search") }}'>
                         {{ csrf_field() }}
-                            <div class="input-group">
-                                <input type="text" name="search" class="form-control" placeholder="Search for...">
-                                    <span class="input-group-btn">
-                                        <button type="submit" class="btn btn-default">
-                                            Go!
+                              <div class="input-group">
+                                <input type="text" name="search" class="form-control" placeholder="Search"><button type="submit" class="btn btn-default" style="margin-left: 2px;">
+
+                                    <i class="fas fa-search"></i>
+                                            
                                         </button>
                                     </span>
                                 </div>
@@ -66,25 +66,27 @@
                             <img src="{{ $post->post_image }}" alt="">
                             <p>{{substr ($post->post_body, 0, 150) }}</p>
 
+                            <cite>Posted on: {{date('M j, Y H:i', strtotime($post->updated_at))}}</cite>
+
+
                             <ul class="nav nav-pills">
                                 <li role="presentation">
-                                    <a href="{{ url("/view/{$post->id}") }}">
-                                        <span class="glyphicon glyphicon-user"> VIEW</span>
+                                    <a href='{{ url("/view/{$post->id}") }}'>
+                                        <i class="fas fa-eye" style="margin: 10px;"> View</i>
                                     </a>
                                 </li>
                                 <li role="presentation">
-                                    <a href="{{ url("/edit/{$post->id}") }}">
-                                        <span class="glyphicon glyphicon-edit"> EDIT</span>
+                                    <a href='{{ url("/edit/{$post->id}") }}'>
+                                        <i class="far fa-edit" style="margin: 10px;"> Edit</i>
                                     </a>
                                 </li>
                                 <li role="presentation">
-                                    <a href="{{ url("/delete/{$post->id}") }}">
-                                        <span class="glyphicon glyphicon-trash"> DELETE</span>
-                                    </a>
+                                    <a href='{{ url("/delete/{$post->id}") }}'>
+                                        <i class="far fa-trash-alt" style="margin: 10px;"> Delete</i>
                                 </li>
                             </ul>
 
-                            <cite style="float:left;">Posted on: {{date('M j, Y H:i', strtotime($post->updated_at))}}</cite>
+                            
 
                             
                             <hr/>

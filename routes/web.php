@@ -41,10 +41,10 @@ Route::get('/delete/{id}', 'PostController@deletePost')->middleware('auth');
 
 Route::get('/category/{id}', 'PostController@category')->middleware('auth');
 
-Route::get('/like/{id}', 'PostController@like')->middleware('auth');
+Route::get('/like/{id}', 'PostController@like');
 
-Route::get('/dislike/{id}', 'PostController@dislike')->middleware('auth');
+Route::get('/dislike/{id}', 'PostController@dislike');
 
-Route::post('/comment/{id}', 'PostController@comment')->middleware('auth');
+Route::post('/comment/{id}', 'PostController@comment');
 
-Route::post('/search', 'PostController@search')->middleware('auth');
+Route::post('/search', 'PostController@search');
